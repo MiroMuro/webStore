@@ -1,4 +1,4 @@
-package com.example.Bookstore;
+package com.example.Bookstore.domain;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -14,23 +14,23 @@ public class Book {
 	private String title;
 	private String author;
 	private String isbn;
-	private String release;
+	private Integer release;
 	private String price;
 	
 	
 
 // private String author;
 
-// private String isbn;
 public Book(){}
 
-public Book(String title,String author,String isbn, String release, String price) {
+public Book(String title,String author,String isbn, Integer release, String price) {
 	super();
 	this.title= title;
 	this.author=author;
 	this.isbn = isbn;
 	this.release = release;
 	this.price= price;
+	
 }
 public Long getId() {
 	return id;
@@ -50,10 +50,10 @@ public String getAuthor() {
 public void setAuthor(String author) {
 	this.author = author;
 }
-public String getrelease() {
+public Integer getRelease() {
 	return release;
 }
-public void setrelease(String release) {
+public void setRelease(Integer release) {
 	this.release = release;
 }
 public String getIsbn() {

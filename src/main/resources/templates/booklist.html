@@ -5,13 +5,24 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 <body>
-<p>Welcome to Haaga-Helia!</p>
-<h1>My Friends:</h1>
-<tr th:each="book: ${books}">
- <td th:text="${book.title}"></td>
- <td th:text="${book.author}"></td>
- <br/>
- </tr>
- 
+<h1>Books:</h1>
+<table class="table table-striped">
+<tr>
+	<th>Title:</th>
+	<th>Author:</th>
+	<th>Isbn:</th>
+	<th>Year:</th>
+	<th>Price:</th>
+	<th>Id:</th>
+</tr>
+	<tr th:each="book: ${books}">
+ 	  <td th:text="${book.title}"></td>
+ 	  <td th:text="${book.author}"></td>
+ 	  <td th:text="${book.isbn}"></td>
+ 	  <td th:text="${book.release}"></td>
+ 	  <td th:text="${book.price}"></td>
+ 	  <td th:text="${book.id}"></td>
+	 </tr>
+</table>
 </body>
 </html>
