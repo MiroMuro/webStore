@@ -1,6 +1,7 @@
 package com.example.Bookstore;
 
 import org.springframework.boot.CommandLineRunner;
+import java.util.logging.Logger;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
@@ -9,6 +10,8 @@ import org.springframework.jdbc.core.JdbcTemplate;
 
 import com.example.Bookstore.domain.Book;
 import com.example.Bookstore.domain.BookRepository;
+import com.example.Bookstore.domain.Category;
+import com.example.Bookstore.domain.CategoryRepository;
 @SpringBootApplication
 @EnableJpaRepositories
 public class BookstoreApplication {
@@ -17,15 +20,23 @@ public class BookstoreApplication {
 		SpringApplication.run(BookstoreApplication.class, args);
 	}
 	@Bean
-	public CommandLineRunner bookDemo(BookRepository repository) {
+	public CommandLineRunner bookDemo(BookRepository repository,CategoryRepository crepository) {
 	return (args) -> {
-		repository.save(new Book("Harry Potter","J.K. Rowling","123abc",2000,"19,99"));
-		for(Book book: repository.findAll()) {
-			System.out.println(book);
+		 Logger logger=Logger.getLogger("global");
+
+		crepository.save(new Category("Fantasy"));
+		crepository.save(new Category("Sci-fi"));
+		crepository.save(new Category("Horror"));
+
+		repository.save(new Book("Harry Potter","J.K. Rowling","123abc",2000,"19,99", crepository.findByName("Fantasy")));
+		repository.save(new Book("Persy Jackson", "Jack Daniels,","897asc89",2008,"5.90",crepository.findByName("Fantasy")));
+		repository.save(new Book("Pokemon", "Pers. A. Ukko,","jd8sjs83",1997,"18.90",crepository.findByName("Horror")));
+
+		
 		};
 	
 		
 	};
 	}
 
-}
+

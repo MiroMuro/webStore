@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.Bookstore.domain.Book;
 import com.example.Bookstore.domain.BookRepository;
+import com.example.Bookstore.domain.CategoryRepository;
 
 import org.springframework.stereotype.Controller;
 
@@ -16,7 +17,8 @@ import org.springframework.stereotype.Controller;
 public class BookController {
 	@Autowired
 	private BookRepository repository;
-	
+	@Autowired
+	private CategoryRepository crepository;
 	@RequestMapping(value="/booklist")
 	public String bookList(Model model) {
 		model.addAttribute("books", repository.findAll());
@@ -25,6 +27,7 @@ public class BookController {
 	@RequestMapping(value="/add")
 	public String addBook(Model model) {
 		model.addAttribute("book", new Book());
+		model.addAttribute("categories", crepository.findAll());
 		return "addbook";
 	}
 	
