@@ -1,11 +1,13 @@
 <!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <class="table table-striped">
 <head>
 <title>Server Programming with Spring Boot</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 <body>
+<h1 th:inline="text">Hello [[${#httpServletRequest.remoteUser}]]!</h1>
 <h1>Books:</h1>
 <table class="table table-striped">
 <tr>
@@ -25,8 +27,9 @@
  	  <td th:text="${book.price}"></td>
  	  <td th:text="${book.id}"></td>
  	  <td th:text="${book.category.name}"></td>
- 	  <td> <a  th:href="@{/delete/{id}(id=${book.id})}" class="btn btn-danger">Delete this book</a></td>
+ 	  <td sec:authorize="hasRole('ADMIN')"> <a  th:href="@{/delete/{id}(id=${book.id})}" class="btn btn-danger">Delete this book</a></td>
  	  <td> <a th:href="@{/editbook/{id}(id=${book.id})}"class="btn btn-success">Edit this book</a></td>
+ 	  <td> <a th:href="@{/logout}"class="btn btn-danger">Log out</a></td>
 	 </tr>
 </table>
 <a href="/add" class="btn btn-primary">Add a book</a>

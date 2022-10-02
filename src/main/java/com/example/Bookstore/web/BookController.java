@@ -19,7 +19,7 @@ import com.example.Bookstore.domain.CategoryRepository;
 
 import org.springframework.stereotype.Controller;
 
-@RestController
+@Controller
 public class BookController {
 	
 	@Autowired
@@ -69,6 +69,15 @@ public class BookController {
 		model.addAttribute("categories", crepository.findAll());
 
 		return "editbook";
+	}
+	
+	@RequestMapping(value="/login")
+	public String login() {
+		return "login";
+	}
+	@RequestMapping(value="/logout")
+	public String logout() {
+		return "logout";
 	}
 	
 
