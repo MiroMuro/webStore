@@ -37,8 +37,6 @@ public class BookstoreApplication {
 		repository.save(new Book("Persy Jackson", "Jack Daniels,","897asc89",2008,"5.90",crepository.findByName("Fantasy")));
 		repository.save(new Book("Pokemon", "Pers. A. Ukko,","jd8sjs83",1997,"18.90",crepository.findByName("Horror")));
 		
-		Urepo.save(new User("user","$2a$10$Xgc5M1k2WNh4sw93qmgrM.Hc64iaifzro.ME8LjejMl.yyNOpGG6G","USER"));
-		Urepo.save(new User("admin","$2a$10$oXYiJuvfs8hrvWUAIgbRbOvi1m60crb4n7GWs6ZLeb2HNc.ES9ENC","ADMIN"));
 		
 		
 		};
