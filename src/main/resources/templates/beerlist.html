@@ -1,0 +1,40 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+<title>Server Programming with Spring Boot</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+	<h1 th:inline="text">Hello [[${#httpServletRequest.remoteUser}]]!</h1>
+	<h1>Beers:</h1>
+	<table class="table table-bordered">
+		<tr>
+			<th>Name:</th>
+			<th>Price:</th>
+			<th>Rating:</th>
+			<th>Size and material:</th>
+			<th>Kauppa:</th>
+		</tr>
+		<tr th:each="beer: ${beers}">
+			<td th:text="${beer.name}"></td>
+			<td th:text="${beer.hinta}+'€'"></td>
+			<td th:text="${beer.maku}"></td>
+			<td th:text="${beer.koko}"></td>
+			<td th:text="${beer.kauppa.name}"></td>
+			<td>
+			<img th:src="${beer.photosImagePath}" width="200" height="200"/></td>
+			<td sec:authorize="hasAuthority('ADMIN')"><a
+				th:href="@{/delete/{id}(id=${beer.id})}" class="btn btn-danger">Delete
+					this beer</a></td>
+			<td><a th:href="@{/editbeer/{id}(id=${beer.id})}"
+				class="btn btn-success">Edit this beer</a></td>
+			
+		</tr>
+	</table>
+	<a href="/add" class="btn btn-primary">Add a beer</a>
+	<a th:href="@{/logout}" class="btn btn-danger">Log out</a>
+</body>
+<link type="text/css" rel="stylesheet" href="/css/bootstrap.min.css"
+	th:href="@{/css/bootstrap.min.css}" />
+</html>

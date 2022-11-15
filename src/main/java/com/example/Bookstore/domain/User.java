@@ -9,7 +9,11 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "User_data")
+//Luodaan uusi taulu käyttäjille. "User" on varattu sana databasesssa, 
+//niin taulu nimetään uudestaan.
 public class User {
+	//Ohjelma pitää huolen id:n luomisesta.
+	//Arvot eivät saa olla null tai samanarvoisia.
 	@Id
 	@GeneratedValue(strategy= GenerationType.IDENTITY)
 	@Column(nullable= false, updatable = false)

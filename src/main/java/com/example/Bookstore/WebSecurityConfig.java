@@ -1,4 +1,4 @@
-package com.example.Bookstore;
+	package com.example.Bookstore;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,6 +26,8 @@ import com.example.Bookstore.service.UserDetailServiceImpl;
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	@Override
+	//Määritetään kirjautuminen, sivujen käyttöoikeus sekä reititys
+	//sisäänkirjautumisen jälkeen
     protected void configure(HttpSecurity http) throws Exception {
         http
             .authorizeRequests()
@@ -33,7 +35,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
             .formLogin()
                 .loginPage("/login")
-                .defaultSuccessUrl("/booklist", true)
+                .defaultSuccessUrl("/beerlist", true)
                 .permitAll()
                 .and()
             .logout()
@@ -41,9 +43,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     
 	}
 	@Autowired
+	// Otetaan käyttöön käyttäjien tietoja hallinnoiva luokka
 	private UserDetailServiceImpl userDetailsService;
 
     @Autowired
+    //Otetaan käyttöön salasanan encryptaaja.
     public void configureGlobal (AuthenticationManagerBuilder auth)
    throws Exception{
 		   auth.userDetailsService(userDetailsService)
