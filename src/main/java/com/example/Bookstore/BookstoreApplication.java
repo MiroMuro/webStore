@@ -69,9 +69,9 @@ public class BookstoreApplication {
 		krepository.save(new Kauppa("K-supermarket"));
 		
 		//Lisätään Controllerin kautta testioluita databaseen sekä repositorioon.
-		beerController.save(new Beer( "Olut Olut",0.99,"3/5","0.33L can",krepository.findByName("Lidl"),null),multipartFileToSend);
-		beerController.save(new Beer("Karhu IV", 2.35,"4/5", "0.33L Glass bottle",krepository.findByName("Prisma"),null),multipartFileToSend1);
-		beerController.save(new Beer("Pirkka 3 lager (sininen)",1.25,"3.5/5","0.33L can",krepository.findByName("K-market"),null), multipartFileToSend2);
+		beerController.save(new Beer( "Olut Olut",0.99,"3/5","0.33L can",krepository.findByName("S-market").get(0),null),multipartFileToSend);
+		beerController.save(new Beer("Karhu IV", 2.35,"4/5", "0.33L Glass bottle",krepository.findByName("Prisma").get(0),null),multipartFileToSend1);
+		beerController.save(new Beer("Pirkka 3 lager (sininen)",1.25,"3.5/5","0.33L can",krepository.findByName("K-market").get(0),null), multipartFileToSend2);
 		//repository.save(new Beer("Karhu IV", 2.35,"4/5", "0.33L Glass bottle",krepository.findByName("Prisma"),null));
 		//repository.save(new Beer("Pirkka 3 lager (sininen)",1.25,"3.5/5","0.33L can",krepository.findByName("K-market"),null));
 		

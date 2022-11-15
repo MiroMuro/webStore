@@ -40,7 +40,7 @@ class BeerstoreApplicationTests {
 	}
 	@Test
 	public void TestCreatingBeer() throws Exception {
-		Beer beer = new Beer("Sandels",1.30,"4/5","0.5L can",krepository.findByName("Prisma"),null);
+		Beer beer = new Beer("Sandels",1.30,"4/5","0.5L can",krepository.findByName("Prisma").get(0),null);
 		repository.save(beer);
 		assertThat(beer.getId()).isNotNull();
 	}
