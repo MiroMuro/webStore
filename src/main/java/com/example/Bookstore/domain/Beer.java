@@ -48,7 +48,7 @@ public class Beer {
 	public String getPhotosImagePath() {
 		if (photos == null || id == null) return null;
 		
-		return "https://beerstoremiro.herokuapp.com/Bookstore/user-photos/"+"null"+"/"+photos;
+		return "/../user-photos/"+"null"+"/"+photos;
 	}
 	public Beer() {
 	}
