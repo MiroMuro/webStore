@@ -48,7 +48,7 @@ public class Beer {
 	public String getPhotosImagePath() {
 		if (photos == null || id == null) return null;
 		
-		return "/user-photos/"+"null"+"/"+photos;
+		return "Bookstore/user-photos/"+"null"+"/"+photos;
 	}
 	public Beer() {
 	}
